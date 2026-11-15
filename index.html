@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentsforYou.ai | Your business, on autopilot</title>
+<meta name="description" content="We build custom AI agents that take over repetitive work, so things get done accurately, on time, and with a clear record. Made for businesses, agencies, teams, and individuals.">
+<meta property="og:title" content="AgentsforYou.ai | Your business, on autopilot">
+<meta property="og:description" content="Custom AI agents that take over the repetitive work in your business.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFDA03">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cmask id='m' maskUnits='userSpaceOnUse' x='-10' y='-10' width='84' height='84'%3E%3Crect x='-10' y='-10' width='84' height='84' fill='%23fff'/%3E%3Cpolygon points='-10,52.875 74,26.625 74,31.125 -10,57.375'/%3E%3C/mask%3E%3Crect width='64' height='64' rx='16' fill='%23FFDA03'/%3E%3Cpath d='M32 12L54 56H41L32 33L23 56H10Z' fill='%23111' mask='url(%23m)' transform='translate(0 -1)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+/* set theme before paint: saved choice, else the phone/computer setting */
+(function(){var s=null;try{s=localStorage.getItem('theme')}catch(e){}
+var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.documentElement.setAttribute('data-theme',d?'dark':'light')})();
+</script>
+<style>
+:root{--y:#FFDA03;--y2:#FFC800;--bg:#FFFDF5;--bg2:#FFF6CC;--card:#FFFFFF;--ink:#111111;--mute:#5d5d55;--bd:#EBE4C4;--btnink:#111;--sh:0 10px 40px rgba(17,17,17,.08);--navbg:rgba(255,253,245,.82)}
+[data-theme=dark]{--bg:#0B0B0A;--bg2:#141410;--card:#16160F;--ink:#F6F3E6;--mute:#A9A593;--bd:#2A2A1E;--sh:0 10px 40px rgba(0,0,0,.5);--navbg:rgba(11,11,10,.78)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;transition:background .4s,color .4s;overflow-x:hidden}
+h1,h2,h3{line-height:1.08;letter-spacing:-.03em}
+h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:800}
+h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:700}
+p{color:var(--mute)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:110px 0;position:relative}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:16px}
+.hl{background:linear-gradient(transparent 62%,var(--y) 62%,var(--y) 92%,transparent 92%);color:inherit}
+[data-theme=dark] .hl{background:none;color:var(--y)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--y);color:#111;font:700 1rem 'Plus Jakarta Sans',sans-serif;padding:15px 30px;border-radius:999px;border:2px solid var(--y);text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,218,3,.45)}
+.btn.sm{padding:10px 20px;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+/* nav */
+header{position:sticky;top:0;z-index:60;background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;text-decoration:none;white-space:nowrap}
+.logo i{background:var(--y);color:#111;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-style:normal}
+.logo i svg{width:26px;height:26px}
+[data-theme=dark] .logo i{color:#fff}
+.links{display:flex;gap:6px;list-style:none}
+.links a{display:block;padding:8px 14px;border-radius:999px;font-size:.92rem;font-weight:600;text-decoration:none;color:var(--mute);white-space:nowrap;transition:.2s}
+.links a:hover{color:var(--ink);background:var(--bg2)}
+.navr{display:flex;align-items:center;gap:10px}
+.tgl{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--bd);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:.2s}
+.tgl:hover{border-color:var(--y)}
+.tgl svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tgl .sun{display:none}[data-theme=dark] .tgl .sun{display:block}[data-theme=dark] .tgl .moon{display:none}
+.burger{display:none}
+@media(max-width:820px){.links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 22px 20px;border-bottom:1px solid var(--bd)}.links.open{display:flex}.burger{display:grid}.navr .btn{display:none}}
+/* hero */
+.hero{padding:120px 0 130px;text-align:center;background:radial-gradient(800px 380px at 50% 0,rgba(255,218,3,.22),transparent 70%),var(--bg)}
+.hero h1{max-width:900px;margin:0 auto}
+.hero p.sub{max-width:700px;margin:28px auto 38px;font-size:clamp(1rem,1.9vw,1.2rem)}
+
+/* ===== space section ===== */
+.spacewrap{position:relative;padding:0;background:linear-gradient(180deg,var(--bg) 0,#05050a 360px,#05050a calc(100% - 360px),var(--bg) 100%)}
+.space{position:relative;padding:300px 0 260px;color:#F6F3E6;overflow:hidden}
+.space p{color:#b9b5a2}
+.space .eyebrow{color:#b9b5a2}
+.space h2{color:#F6F3E6}
+.space .head{text-align:center;max-width:720px;margin:0 auto 20px;position:relative;z-index:5}
+#stars{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.neb{position:absolute;border-radius:50%;transition:translate .4s ease-out;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none}
+.neb.a{width:520px;height:520px;background:radial-gradient(circle,#ffda03 0%,transparent 70%);top:12%;left:-8%;opacity:.12}
+.neb.b{width:620px;height:620px;background:radial-gradient(circle,#6a4cff 0%,transparent 70%);bottom:2%;right:-12%;opacity:.14}
+.stage{position:relative;z-index:2;width:min(860px,96vw);margin:30px auto 0;aspect-ratio:1/1}
+.sys{position:absolute;inset:0;transition:translate .25s ease-out}
+.orbit{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;border:1px solid rgba(255,255,255,.09);transform:translate(-50%,-50%)}
+.arm{position:absolute;left:50%;top:50%;width:0;height:0;animation:spin linear infinite}
+.pl{position:absolute;animation:unspin linear infinite}
+@keyframes spin{to{transform:rotateZ(360deg)}}
+@keyframes unspin{to{transform:rotateZ(-360deg)}}
+.stage.paused .arm,.stage.paused .pl,.stage.paused .ball,.stage.paused .shade,.stage.paused .sunbody{animation-play-state:paused}
+.bill{position:absolute;left:0;top:0}
+/* planets: dark glass spheres, lit warmly from the sun side */
+.ball{position:relative;pointer-events:auto;border-radius:50%;cursor:pointer;display:grid;place-items:center;
+ background:radial-gradient(circle at 50% 50%,#1d1d2a,#0c0c14);border:1px solid rgba(255,255,255,.2);
+ box-shadow:0 0 16px rgba(255,218,3,.1);animation:depth 30s ease-in-out infinite;transition:transform .3s,box-shadow .3s,border-color .3s}
+.shade{position:absolute;inset:0;border-radius:50%;pointer-events:none;animation:spin 30s linear infinite;background:radial-gradient(circle at 12% 50%,rgba(255,225,140,.5),rgba(255,225,140,0) 58%);box-shadow:inset 2px 0 3px -1px rgba(255,225,140,.45)}
+@keyframes depth{0%,100%{scale:.94}50%{scale:1.06}}
+.ball svg{position:relative;z-index:2;width:46%;height:46%;stroke:#f3efe0;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;opacity:.92;transition:stroke .3s}
+.ball:hover,.ball.on{transform:scale(1.2);border-color:var(--y);box-shadow:0 0 26px rgba(255,218,3,.45)}
+.ball:hover svg,.ball.on svg{stroke:var(--y)}
+.ball.big{border-color:rgba(255,218,3,.75);background:radial-gradient(circle at 50% 50%,#2a2410,#100d05);box-shadow:0 0 34px rgba(255,218,3,.35),0 0 80px rgba(255,190,0,.18)}
+.ball.big svg{stroke:var(--y)}
+.ball.big .lab{color:#ffe680;font-weight:800}
+.ball.big::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(255,218,3,.4);pointer-events:none;animation:halo 3.2s ease-out infinite}
+@keyframes halo{from{transform:scale(.9);opacity:.8}to{transform:scale(1.28);opacity:0}}
+.lab{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;font-size:.66rem;font-weight:700;letter-spacing:.06em;white-space:nowrap;color:#d9d4b8;text-shadow:0 0 8px #000;pointer-events:none;opacity:.85}
+/* sun: soft brand-yellow core */
+.sunc{position:absolute;left:50%;top:50%}
+.sunbill{position:absolute;left:0;top:0}
+.sunbody{position:relative;width:112px;height:112px;border-radius:50%;margin:-56px 0 0 -56px;cursor:pointer;
+ background:radial-gradient(circle at 40% 35%,#fff8d6 0%,#ffe45c 40%,#FFDA03 70%,#f0b400 100%);
+ box-shadow:0 0 36px 6px rgba(255,218,3,.4),0 0 110px 30px rgba(255,190,0,.16);
+ animation:pulse 5s ease-in-out infinite;display:grid;place-items:center;text-align:center;transition:box-shadow .6s}
+.sunbody svg{width:62%;height:62%;color:#111;transition:color .3s}
+[data-theme=dark] .sunbody svg{color:#fff}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+/* info card */
+.card-info{position:relative;z-index:6;width:min(560px,92vw);margin:22px auto 0;background:rgba(20,20,14,.82);border:1px solid rgba(255,218,3,.35);border-radius:22px;padding:24px 26px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 14px 50px rgba(0,0,0,.55),0 0 40px rgba(255,218,3,.08);min-height:132px;text-align:left}
+.card-info h3{color:#ffe680;font-size:1.25rem;margin-bottom:8px}
+.card-info p{color:#d9d4b8;font-size:.98rem}
+.card-info .for{margin-top:10px;font-size:.85rem;color:#ffe680}
+.card-info .for b{color:#fff}
+.card-info.pop{animation:cardin .35s ease-out}
+@keyframes cardin{from{opacity:0;transform:translateY(10px)}}
+@media(max-width:700px){.space{padding:240px 0 220px}.stage{margin-top:20px}.sunbody{width:72px;height:72px;margin:-36px 0 0 -36px}.lab{font-size:.58rem;margin-top:3px}}
+@media(prefers-reduced-motion:reduce){.arm,.pl,.shade,.ball,.ball.big::after,.sunbody{animation:none!important}}
+
+/* ===== why agents ===== */
+.why .head{max-width:760px;margin-bottom:56px}
+.why .head p{font-size:1.1rem;margin-top:18px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.cmp{grid-template-columns:1fr}}
+.col{background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:34px;box-shadow:var(--sh)}
+.col.ag{border-color:var(--y);background:linear-gradient(180deg,rgba(255,218,3,.12),var(--card))}
+.col h3{font-size:1.4rem;margin-bottom:6px}
+.col .tag{font-size:.85rem;color:var(--mute);margin-bottom:20px;display:block}
+.col ul{list-style:none;display:grid;gap:14px}
+.col li{display:flex;gap:12px;color:var(--mute);font-size:.98rem}
+.col li b{color:var(--ink)}
+.col li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;margin-top:2px;background:var(--bd)}
+.col.ag li::before{background:var(--y) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/13px no-repeat}
+.balance{margin-top:26px;font-size:.95rem;border-left:4px solid var(--y);padding:14px 20px;background:var(--bg2);border-radius:0 14px 14px 0}
+/* ===== services ===== */
+.svc{background:var(--bg2)}
+.svc .head{max-width:700px;margin-bottom:50px}
+.svc .head p{font-size:1.1rem;margin-top:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.tier{background:var(--card);border:1px solid var(--bd);border-radius:28px;padding:40px 36px;display:flex;flex-direction:column;box-shadow:var(--sh);transition:transform .25s,border-color .25s}
+.tier:hover{transform:translateY(-5px);border-color:var(--y)}
+.tier.big{background:#0d0d0a;color:#F6F3E6;border-color:#0d0d0a}
+[data-theme=dark] .tier.big{background:linear-gradient(180deg,#1c1a08,#0f0f0a);border-color:var(--y)}
+.tier.big p{color:#bdb8a2}
+.tier .num{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+.tier.big .num{color:var(--y)}
+.tier h3{font-size:clamp(1.7rem,3vw,2.2rem);margin-bottom:14px}
+.tier p{font-size:1.02rem;margin-bottom:22px}
+.tier .who{font-size:.9rem;margin-bottom:28px}
+.tier .who b{color:var(--ink)}.tier.big .who b{color:#fff}
+.tier .btn{margin-top:auto;align-self:flex-start}
+/* ===== goal ===== */
+.goal{text-align:center}
+.goal .head{max-width:760px;margin:0 auto 54px}
+.goal .head p{margin-top:16px;font-size:1.1rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:54px;counter-reset:s}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.stp{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:28px 20px;text-align:center;position:relative;counter-increment:s}
+.stp::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;margin:0 auto 14px;border-radius:50%;background:var(--y);color:#111;font-weight:800}
+.stp h3{font-size:1.05rem;margin-bottom:6px}.stp p{font-size:.9rem}
+/* ===== faq ===== */
+.faq .head{max-width:700px;margin-bottom:40px}
+.faq details{background:var(--card);border:1px solid var(--bd);border-radius:18px;margin-bottom:12px;padding:0 24px;transition:border-color .2s}
+.faq details[open]{border-color:var(--y)}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.04rem;padding:20px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:0 0 30px;height:30px;border-radius:50%;background:var(--y);color:#111;display:grid;place-items:center;font-size:1.2rem;font-weight:700;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:22px;font-size:1rem}
+/* ===== footer ===== */
+footer{border-top:1px solid var(--bd);padding:56px 0 40px;background:var(--bg)}
+.fgrid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.fgrid p{max-width:360px;margin-top:12px;font-size:.95rem}
+.soc{display:flex;gap:12px}
+.soc a{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--bd);display:grid;place-items:center;color:var(--ink);transition:.2s}
+.soc a:hover{background:var(--y);color:#111;border-color:var(--y);transform:translateY(-3px)}
+.soc svg{width:21px;height:21px;fill:currentColor}
+.copy{margin-top:40px;padding-top:24px;border-top:1px solid var(--bd);font-size:.85rem;color:var(--mute)}
+/* floating whatsapp (small round icon) */
+#wa{position:fixed;right:18px;bottom:18px;z-index:70;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,211,102,.5);transition:transform .2s}
+#wa:hover{transform:scale(1.08)}
+#wa svg{width:28px;height:28px;fill:currentColor}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media print{header,#wa,#stars{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="mk" viewBox="0 0 64 64"><mask id="mkm" maskUnits="userSpaceOnUse" x="-10" y="-10" width="84" height="84"><rect x="-10" y="-10" width="84" height="84" fill="#fff"/><polygon fill="#000" points="-10,52.875 74,26.625 74,31.125 -10,57.375"/></mask><path d="M32 5L61 59H43L32 28L21 59H3Z" fill="currentColor" mask="url(#mkm)"/></symbol></svg>
+<!-- ===== CONFIG: replace these placeholders ===== -->
+<script>
+const CONFIG={
+  CAL_URL:"https://cal.com/mayank-singh-x7zkc2/30min",   /* Cal.com booking link */
+  INSTAGRAM_URL:"https://www.instagram.com/agentsforyou.co", /* TODO */
+  LINKEDIN_URL:"https://www.linkedin.com/company/agentsforyou/", /* TODO */
+  WHATSAPP_NUMBER:"918628026453",
+  WHATSAPP_MSG:"Hi Mayank, I saw AgentsforYou.ai and I'd like to know more about AI agents for my business."
+};
+</script>
+
+<header><div class="wrap"><nav aria-label="Main">
+<a class="logo" href="#home"><i><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mk"/></svg></i>AgentsforYou.ai</a>
+<ul class="links" id="links">
+<li><a href="#agents">Agents</a></li><li><a href="#why">Why Agents</a></li><li><a href="#services">Services</a></li><li><a href="#how">How It Works</a></li><li><a href="#faq">FAQ</a></li>
+</ul>
+<div class="navr">
+<button class="tgl" id="tgl" aria-label="Switch light and dark mode" title="Light / dark">
+<svg class="moon" viewBox="0 0 24 24"><path d="M20 15a8 8 0 1 1-11-11 7 7 0 0 0 11 11z"/></svg>
+<svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<a class="btn sm cal" href="#">Contact</a>
+<button class="tgl burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+</nav></div></header>
+
+<main>
+<section class="hero" id="home"><div class="wrap">
+<span class="eyebrow rv">AI agents for businesses, agencies, teams &amp; individuals</span>
+<h1 class="rv">Your business,<br>on <span class="hl">autopilot.</span></h1>
+<p class="sub rv">We build custom AI agents that take over the repetitive work, so things get done accurately, on time, and with a clear record of what happened. Made for businesses, agencies, teams, and individuals who want to spend their time on what matters.</p>
+<a class="btn cal rv" href="#">Apply to Work With Us</a>
+</div></section>
+
+<div class="spacewrap" id="agents">
+<section class="space"><canvas id="stars"></canvas><div class="neb a"></div><div class="neb b"></div>
+<div class="wrap">
+<div class="head"><span class="eyebrow">Our agents</span>
+<h2>One sun. Many agents. <span style="color:var(--y)">Your universe.</span></h2>
+<p style="margin-top:16px;font-size:1.08rem">Tap any planet to see what that agent does for a business. The biggest planet is what they become when they all work together.</p></div>
+<div class="stage" id="stage">
+<div class="sys" id="sys"><div class="sunc"><div class="sunbill"><div class="sunbody" id="sun" tabindex="0" role="button" aria-label="Agents for You"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mk"/></svg></div></div></div>
+<div id="orbits"></div>
+</div></div>
+<div class="card-info" id="info" aria-live="polite"><h3>Agents for You</h3><p>Every business has repetitive work that eats time. We build custom AI agents that take it over. Pick a planet to meet one of them.</p></div>
+</div>
+</section>
+</div>
+
+<section class="why" id="why"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Why agents</span>
+<h2>Repetitive work is where agents <span class="hl">shine.</span></h2>
+<p>Whether it is answering calls, following up with leads, handling support or updating records, the work is the same task done again and again. That is exactly where an agent beats a person.</p></div>
+<div class="cmp rv">
+<div class="col"><h3>Done by people</h3><span class="tag">Great at judgment, limited at repetition</span>
+<ul>
+<li><span><b>Available in working hours.</b> Calls, messages and leads that arrive at night or on weekends wait.</span></li>
+<li><span><b>Quality varies.</b> Tired or busy days mean missed follow-ups and small errors.</span></li>
+<li><span><b>Growth means hiring.</b> More volume needs more people, training and management.</span></li>
+<li><span><b>Records depend on habit.</b> Notes and updates are only as good as who remembers.</span></li>
+</ul></div>
+<div class="col ag"><h3>Done by agents</h3><span class="tag">Built for volume, consistency and a clear record</span>
+<ul>
+<li><span><b>Always on.</b> Every call, enquiry and lead gets a response, so opportunities are not missed.</span></li>
+<li><span><b>Consistent every time.</b> The same accuracy on the first task and the thousandth.</span></li>
+<li><span><b>Scales instantly.</b> Ten tasks or ten thousand, with no hiring or training.</span></li>
+<li><span><b>A clear report on every task.</b> You see what was done, when, and what came out of it.</span></li>
+<li><span><b>Frees your team.</b> People focus on strategy, relationships and the tricky cases.</span></li>
+</ul></div>
+</div>
+<p class="balance rv">Agents are not a replacement for people. The best setups hand complex or sensitive cases to a human, with the full context, so your team spends its time where it matters most.</p>
+</div></section>
+
+<section class="svc" id="services"><div class="wrap">
+<div class="head rv"><span class="eyebrow">What we offer</span>
+<h2>Two ways to work with us.</h2>
+<p>Start with one agent for one job, or let a connected team of agents run an entire workflow. Every project is built around your business.</p></div>
+<div class="two">
+<article class="tier rv"><div class="num">Single Agents</div><h3>One agent. One job. Done right.</h3>
+<p>We design and build a custom agent for a specific task in your business, such as handling calls, qualifying leads, answering support questions, or following up with customers.</p>
+<p class="who"><b>Best for:</b> businesses and individuals who want to automate one clear process and see results quickly.</p>
+<a class="btn cal" href="#">Book a Discovery Call</a></article>
+<article class="tier big rv"><div class="num">The Full Agent Team</div><h3>A connected team that runs the workflow.</h3>
+<p>Multiple specialised agents working together, passing work to each other from the first enquiry to the final follow-up, with reporting across the whole system and people stepping in where needed.</p>
+<p class="who"><b>Best for:</b> growing businesses and agencies that want whole parts of their operations running on their own.</p>
+<a class="btn cal" href="#">Book a Discovery Call</a></article>
+</div></div></section>
+
+<section class="goal" id="how"><div class="wrap">
+<div class="head rv"><span class="eyebrow">How it works</span>
+<h2>From a conversation to a working agent.</h2>
+<p>Every project is scoped and priced after a short discovery call, so you only pay for what your business actually needs.</p></div>
+<div class="steps rv">
+<div class="stp"><h3>Book a call</h3><p>Pick a time that suits you. No preparation needed.</p></div>
+<div class="stp"><h3>We learn your business</h3><p>We talk through how you work and where time is being lost.</p></div>
+<div class="stp"><h3>We build it</h3><p>We design, build and test the agents around your workflow.</p></div>
+<div class="stp"><h3>You get it</h3><p>Your agents go live, and we stay on hand to support you.</p></div>
+</div>
+<a class="btn cal rv" href="#">Book a Discovery Call</a>
+</div></section>
+
+<section class="faq" id="faq"><div class="wrap">
+<div class="head rv"><span class="eyebrow">FAQ</span><h2>Good questions.</h2></div>
+<div class="rv">
+<details><summary>Who is behind AgentsforYou.ai?</summary><p>AgentsforYou.ai is run by Mayank. I build custom AI agents for businesses, agencies, teams and individuals, and I work directly with every client, from the first call to the day the agents go live.</p></details>
+<details><summary>What kind of agents can you build?</summary><p>Anything that takes over repetitive work: customer support, voice calling, lead generation and qualification, scheduling and follow-ups, sales and customer retention, and operations and reporting. If your task is not on the list, we can build a custom one for it.</p></details>
+<details><summary>What is the difference between a single agent and the full agent team?</summary><p>A single agent handles one job in your business. The full agent team is several connected agents that run a whole workflow together, for example from a new lead to a booked meeting and the follow-up after it.</p></details>
+<details><summary>How much does it cost and how long does it take?</summary><p>It depends on what your business needs, so we do not publish fixed prices. On the discovery call we look at your workflow, then you get a clear scope, timeline and price before anything is built.</p></details>
+<details><summary>Will the agents replace my team?</summary><p>No. Agents take over the repetitive work so your team can focus on judgment, relationships and complex cases. We build clear handoffs, so a person steps in whenever a situation needs one.</p></details>
+<details><summary>Can the agents connect to the tools I already use?</summary><p>Often, yes, through the APIs and integrations those tools offer. We confirm what is possible for your setup on the discovery call, before any work begins.</p></details>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a class="logo" href="#home"><i><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mk"/></svg></i>AgentsforYou.ai</a><p>Custom AI agents that take over the repetitive work, so your business runs on autopilot.</p></div>
+<div class="soc">
+<a id="fIg" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM17.2 6.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 7.2c-.1-1.7-.5-3.3-1.8-4.5S17.1.9 15.4.8C13.6.7 10.4.7 8.6.8 6.9.9 5.4 1.3 4.1 2.6S2.2 5.5 2.1 7.2C2 9 2 14.3 2.1 16.1c.1 1.7.5 3.3 1.8 4.5s2.8 1.7 4.5 1.8c1.8.1 5 .1 6.8 0 1.7-.1 3.3-.5 4.5-1.8s1.7-2.8 1.8-4.5c.1-1.8.1-7.1.1-8.9-.1-.1-.1-.1 0 0zM19.8 18.4a2.8 2.8 0 0 1-1.6 1.6c-1.1.4-3.7.3-4.9.3-1.2 0-3.8.1-4.9-.3a2.8 2.8 0 0 1-1.6-1.6c-.4-1.1-.3-3.7-.3-4.9 0-1.2-.1-3.8.3-4.9a2.8 2.8 0 0 1 1.6-1.6c1.1-.4 3.7-.3 4.9-.3 1.2 0 3.8-.1 4.9.3a2.8 2.8 0 0 1 1.6 1.6c.4 1.1.3 3.7.3 4.9 0 1.2.1 3.8-.3 4.9z"/></svg></a>
+<a id="fLi" href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.500v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.200 2.1 2.1 0 0 1 0 4.200zM7.100 20.500H3.600V9h3.500v11.500z"/></svg></a>
+<a id="fX" href="https://x.com/agentsforyouco" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a id="fWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+</div></div>
+<div class="copy">© <span id="yr"></span> AgentsforYou.ai. All rights reserved.</div>
+</div></footer>
+
+<a id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+
+<script>
+const $=s=>document.querySelector(s);
+/* ===== links & buttons from CONFIG ===== */
+const waLink='https://wa.me/'+CONFIG.WHATSAPP_NUMBER+'?text='+encodeURIComponent(CONFIG.WHATSAPP_MSG);
+document.querySelectorAll('.cal').forEach(a=>{a.href=CONFIG.CAL_URL;a.target='_blank';a.rel='noopener'});
+$('#wa').href=waLink;$('#fWa').href=waLink;$('#fIg').href=CONFIG.INSTAGRAM_URL;$('#fLi').href=CONFIG.LINKEDIN_URL;
+$('#yr').textContent=new Date().getFullYear();
+
+/* ===== theme toggle ===== */
+$('#tgl').onclick=()=>{const d=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+document.documentElement.setAttribute('data-theme',d);try{localStorage.setItem('theme',d)}catch(e){}};
+$('#burger').onclick=function(){const o=$('#links').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+$('#links').onclick=e=>{if(e.target.tagName==='A')$('#links').classList.remove('open')};
+
+/* ===== agents data ===== */
+const IC={
+ sup:'<path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8M8 13h5"/>',
+ voi:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+ led:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
+ sch:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4M9 15l2 2 4-4"/>',
+ sal:'<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+ ops:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+ cus:'<path d="M9 8l-5 4 5 4M15 8l5 4-5 4M13 6l-2 12"/>',
+ full:'<circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="19" cy="18" r="1.8"/><path d="M10 10.5L6.4 7.3M14 10.5l3.6-3.2M10 13.5l-3.6 3.2M14 13.5l3.6 3.2"/>'};
+const AGENTS=[
+ {k:'sup',n:'Customer Support',s:'Support',d:'Answers common questions, resolves routine requests, and hands tricky ones to your team with the full conversation attached.',f:'Any business with repeat questions from customers.'},
+ {k:'voi',n:'AI Voice Calling',s:'Voice',d:'Answers and makes calls, collects details, and books the next step, so no enquiry or lead goes unanswered.',f:'Service businesses, sales teams and anyone who lives on the phone.'},
+ {k:'led',n:'Lead Generation and Qualification',s:'Leads',d:'Finds and enriches leads, asks the right questions, and sorts them so your sales team only talks to serious buyers.',f:'Agencies, sales teams and growing businesses.'},
+ {k:'sch',n:'Scheduling and Follow-up',s:'Scheduling',d:'Books, confirms and reschedules appointments, then sends reminders and follow-ups so nothing slips through.',f:'Clinics, consultants, agencies and service providers.'},
+ {k:'sal',n:'Sales and Retention',s:'Sales',d:'Spots your top customers and sends them timely reminders, offers or cart nudges that bring them back and drive repeat sales.',f:'E-commerce, retail and subscription businesses.'},
+ {k:'ops',n:'Operations and Reporting',s:'Reports',d:'Handles data entry, updates your systems, and produces clear reports, so you always know what is happening.',f:'Teams buried in admin, spreadsheets and manual updates.'},
+ {k:'cus',n:'Custom Automation',s:'Custom',d:'A purpose-built agent or small internal tool for the one process that is unique to your business.',f:'Anyone whose workflow does not fit a ready-made tool.'}];
+const BIG={n:'The Full Agent Team',d:'A connected system of specialised agents that pass work to each other, from the first enquiry to the final follow-up, with reporting across the whole workflow and people stepping in where needed.',f:'Growing businesses and agencies that want whole parts of operations running on their own.'};
+AGENTS.push({k:'full',n:BIG.n,s:'Full Team',d:BIG.d,f:BIG.f,big:true});
+
+/* ===== build the solar system ===== */
+const orbits=$('#orbits'),info=$('#info'),stage=$('#stage');
+const DEFAULT='<h3>Agents for You</h3><p>Every business has repetitive work that eats time. We build custom AI agents that take it over. Pick a planet to meet one of them.</p>';
+function say(h){info.innerHTML=h;info.classList.remove('pop');void info.offsetWidth;info.classList.add('pop')}
+function show(o){say('<h3>'+o.n+'</h3><p>'+o.d+'</p>'+(o.big?'<p class="for"><b>Start with one agent. Grow into a full system.</b></p>':'')+'<p class="for"><b>Best for:</b> '+o.f+'</p>')}
+let balls=[];
+function build(){
+  orbits.innerHTML='';balls=[];
+  const W=stage.clientWidth,mobile=W<700;
+  const base=W*(mobile?0.15:0.13),step=W*(mobile?0.04:0.045),bigR=W*(mobile?0.435:0.445);
+  const ps=mobile?Math.max(24,W*0.07):Math.max(34,W*0.046),bigS=mobile?Math.max(38,W*0.11):Math.max(56,W*0.09);
+  AGENTS.forEach((a,i)=>{
+    const r=a.big?bigR:base+step*i,dia=r*2,dur=70,delay=-(i*dur/AGENTS.length);
+    const orb=document.createElement('div');orb.className='orbit';orb.style.width=orb.style.height=dia+'px';
+    const arm=document.createElement('div');arm.className='arm';arm.style.animationDuration=dur+'s';arm.style.animationDelay=delay+'s';
+    const pl=document.createElement('div');pl.className='pl';pl.style.left=r+'px';pl.style.top='0px';pl.style.animationDuration=dur+'s';pl.style.animationDelay=delay+'s';
+    const bill=document.createElement('div');bill.className='bill';
+    const s=a.big?bigS:ps*(0.94+((i*37)%5)*0.04);
+    const ball=document.createElement('div');ball.className='ball'+(a.big?' big':'');ball.tabIndex=0;ball.setAttribute('role','button');ball.setAttribute('aria-label',a.n);
+    ball.style.cssText='width:'+s+'px;height:'+s+'px;margin:'+(-s/2)+'px 0 0 '+(-s/2)+'px';
+    ball.innerHTML='<span class="shade" style="animation-duration:'+dur+'s;animation-delay:'+delay+'s"></span><svg viewBox="0 0 24 24">'+IC[a.k]+'</svg><span class="lab">'+(mobile?a.s:a.n)+'</span>';
+    ball.style.animationDuration=dur+'s';ball.style.animationDelay=delay+'s';
+    const pick=e=>{e.stopPropagation();balls.forEach(b=>b.classList.remove('on'));ball.classList.add('on');stage.classList.add('paused');show(a)};
+    ball.onclick=pick;ball.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(e)}};
+    bill.appendChild(ball);pl.appendChild(bill);arm.appendChild(pl);orb.appendChild(arm);orbits.appendChild(orb);balls.push(ball);
+  });
+}
+build();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,200)});
+function release(){if(!stage.classList.contains('paused'))return;stage.classList.remove('paused');balls.forEach(b=>b.classList.remove('on'));say(DEFAULT)}
+$('#sun').onclick=e=>{e.stopPropagation();stage.classList.remove('paused');balls.forEach(b=>b.classList.remove('on'));say(DEFAULT)};
+$('#sun').onkeydown=e=>{if(e.key==='Enter')$('#sun').click(e)};
+stage.onclick=release;
+
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ===== depth: layers drift gently against each other with the pointer ===== */
+const sys=$('#sys'),nebs=[...document.querySelectorAll('.neb')];
+if(matchMedia('(pointer:fine)').matches&&!still){
+stage.addEventListener('mousemove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+sys.style.translate=(x*-14)+'px '+(y*-14)+'px';nebs.forEach((n,i)=>n.style.translate=(x*(i?30:-30))+'px '+(y*(i?30:-30))+'px')});
+stage.addEventListener('mouseleave',()=>{sys.style.translate='';nebs.forEach(n=>n.style.translate='')})}
+
+/* ===== starfield with parallax ===== */
+const cv=$('#stars'),cx=cv.getContext('2d');let stars=[],sw,sh;
+function initStars(){const sec=cv.parentElement;sw=cv.width=sec.clientWidth;sh=cv.height=sec.clientHeight;
+ const n=Math.min(260,Math.floor(sw*sh/5200));stars=[];
+ for(let i=0;i<n;i++)stars.push({x:Math.random()*sw,y:Math.random()*sh,r:Math.random()*1.5+.2,z:Math.random()*.9+.1,t:Math.random()*6.28,c:Math.random()<.18?'255,218,90':'255,255,255'})}
+function drawStars(){cx.clearRect(0,0,sw,sh);const sec=cv.parentElement.getBoundingClientRect();const off=-sec.top*.0;
+ const sc=scrollY;stars.forEach(s=>{s.t+=.02*s.z;const a=.35+.65*Math.abs(Math.sin(s.t));const y=((s.y-sc*s.z*.18)%sh+sh)%sh;
+ cx.beginPath();cx.fillStyle='rgba('+s.c+','+a*s.z+')';cx.arc(s.x,y,s.r,0,6.283);cx.fill()});
+ if(!matchMedia('(prefers-reduced-motion:reduce)').matches)requestAnimationFrame(drawStars)}
+initStars();drawStars();addEventListener('resize',()=>{initStars()});
+
+/* ===== reveal on scroll ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
