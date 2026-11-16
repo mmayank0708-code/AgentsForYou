@@ -67,7 +67,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:70px;ga
 /* ===== hub & spokes ===== */
 .net{--ink:#FFFFFF;--mute:rgba(255,255,255,.7);--card:#111111;--bd:rgba(255,255,255,.16);--bg2:rgba(255,255,255,.08);color:var(--ink);position:relative;overflow:hidden;padding:170px 0;background:linear-gradient(180deg,var(--bg) 0,#000 140px,#000 calc(100% - 140px),var(--bg) 100%)}
 .net .hl{background:none;color:var(--y)}
-#stars{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+#stars{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0)}
 .neb{position:absolute;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
 .neb.a{width:520px;height:520px;background:radial-gradient(circle,#FFDA03 0%,transparent 70%);top:20%;left:-8%;opacity:.05}
 .neb.b{width:620px;height:620px;background:radial-gradient(circle,#6a4cff 0%,transparent 70%);bottom:14%;right:-12%;opacity:.06}
@@ -89,7 +89,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:70px;ga
 .hub::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid var(--y);opacity:0;animation:halo 4s ease-out infinite}
 @keyframes halo{from{transform:scale(.92);opacity:.55}to{transform:scale(1.28);opacity:0}}
 /* planets: simple dark circle, thin outline, faint yellow glow */
-.node{position:absolute;left:0;top:0;will-change:transform;z-index:4;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit}
+.node{-webkit-tap-highlight-color:transparent;position:absolute;left:0;top:0;will-change:transform;z-index:4;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit}
 .orb{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#ececec 70%,#d6d6d6);border:0;display:grid;place-items:center;box-shadow:0 0 18px rgba(255,255,255,.22);transition:background .25s,border-color .25s,box-shadow .25s,scale .25s}
 .orb svg{width:44%;height:44%;stroke:#111;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
 .node:hover .orb,.node.on .orb,.node:focus-visible .orb{box-shadow:0 0 28px rgba(255,255,255,.5);scale:1.1}
@@ -108,7 +108,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:70px;ga
 .pop-x{position:absolute;top:9px;right:9px;width:28px;height:28px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#f3efe0;font-size:1.05rem;line-height:1;cursor:pointer;display:grid;place-items:center}
 .pop-x:hover{background:var(--y);color:#111}
 @keyframes cardin{from{opacity:0;transform:translateY(8px)}}
-@media(max-width:640px){.net{padding:150px 0}.net .wrap{padding:0 8px}.net .head{padding:0 14px}.hub{width:80px}.lab{font-size:.62rem;margin-top:6px}}
+@media(max-width:640px){.neb{display:none}.net{padding:150px 0}.net .wrap{padding:0 8px}.net .head{padding:0 14px}.hub{width:80px}.lab{font-size:.62rem;margin-top:6px}}
 @media(prefers-reduced-motion:reduce){.hub::after,.node.big::after,#lines line.flow{animation:none!important}}
 
 /* softer, dimensional white planets + reserved info panel */
@@ -532,7 +532,7 @@ function build(){
     nodes.appendChild(nd);p.n=nd;p.a0=ang[p.i];els.push(p);
   });
   last=0;
-  if(still){frame(0)}else raf=requestAnimationFrame(frame);
+  if(still){frame(0)}else{netRun=true;raf=requestAnimationFrame(frame)}
 }
 function frame(now){
   const {cx,cy}=dims;
@@ -543,9 +543,11 @@ function frame(now){
     const x=cx+o.rx*Math.cos(o.a0+g)+2*Math.sin(T*.5+o.i*1.3),y=cy+o.ry*Math.sin(o.a0+g)+2*Math.cos(T*.4+o.i*1.7);
     o.x=x;o.y=y;o.n.style.transform='translate('+(x-o.size/2)+'px,'+(y-o.size/2)+'px)';
   });
-  if(!still)raf=requestAnimationFrame(frame);
+  if(!still){if(netOn)raf=requestAnimationFrame(frame);else netRun=false}
 }
-build();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,200)});
+let netOn=true,netRun=false,lastW=stage.clientWidth;build();let rt;
+addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{const w=stage.clientWidth;if(w!==lastW){lastW=w;build()}},200)});
+new IntersectionObserver(es=>{netOn=es[0].isIntersecting;if(netOn&&!netRun&&!still){netRun=true;last=0;raf=requestAnimationFrame(frame)}}).observe(stage);
 document.addEventListener('visibilitychange',()=>{last=0});
 /* click anywhere that is not an agent or the card closes the card */
 document.addEventListener('click',e=>{if(!e.target.closest('.node,.bubble,.hub'))closePop()});
@@ -553,15 +555,20 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closePop()});
 
 
 /* ===== starfield with parallax ===== */
-const cv=$('#stars'),cx2=cv.getContext('2d');let stars=[],sw,sh;
+const cv=$('#stars'),cx2=cv.getContext('2d');let stars=[],sw,sh;const coarse=matchMedia('(pointer:coarse)').matches;
 function initStars(){const sec=cv.parentElement;sw=cv.width=sec.clientWidth;sh=cv.height=sec.clientHeight;
- const n=Math.min(260,Math.floor(sw*sh/5200));stars=[];
+ const n=Math.min(coarse?120:260,Math.floor(sw*sh/5200));stars=[];
  for(let i=0;i<n;i++)stars.push({x:Math.random()*sw,y:Math.random()*sh,r:Math.random()*1.5+.2,z:Math.random()*.9+.1,t:Math.random()*6.28,c:Math.random()<.18?'255,218,3':'255,255,255'})}
-function drawStars(){cx2.clearRect(0,0,sw,sh);
- stars.forEach(q=>{if(!still)q.t+=.02*q.z;const a=.35+.65*Math.abs(Math.sin(q.t)),y=((q.y-scrollY*q.z*.18)%sh+sh)%sh;
+let starsOn=true,starsRun=false;
+function drawStars(){starsRun=true;cx2.clearRect(0,0,sw,sh);
+ stars.forEach(q=>{if(!still)q.t+=.02*q.z;const a=.35+.65*Math.abs(Math.sin(q.t)),y=q.y;
  cx2.beginPath();cx2.fillStyle='rgba('+q.c+','+a*q.z+')';cx2.arc(q.x,y,q.r,0,6.283);cx2.fill()});
- if(!still)requestAnimationFrame(drawStars)}
-initStars();drawStars();addEventListener('resize',initStars);
+ if(!still&&starsOn)requestAnimationFrame(drawStars);else starsRun=false}
+initStars();drawStars();
+/* only re-seed the stars when the width changes; ignore the height-only resizes mobile browsers fire while scrolling */
+new ResizeObserver(()=>{const sec=cv.parentElement,w=sec.clientWidth,h=sec.clientHeight;
+ if(w!==sw){initStars()}else if(h!==sh){const k=h/sh;stars.forEach(q=>q.y*=k);sh=cv.height=h}}).observe(cv.parentElement);
+new IntersectionObserver(es=>{starsOn=es[0].isIntersecting;if(starsOn&&!starsRun&&!still)requestAnimationFrame(drawStars)}).observe(cv.parentElement);
 
 /* ===== reveal on scroll ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
